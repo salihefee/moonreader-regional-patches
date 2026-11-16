@@ -14,10 +14,16 @@ The single patch, **Remove regional and expiration restrictions**, makes the dev
    ```
 
    Alternatively, [open this Add source link on your phone](https://morphe.software/add-source?github=salihefee/moonreader-regional-patches&app=com.flyersoft.moonreaderp).
-3. Open **Moon+ Reader Pro (regional build)** in Manager. Select **10.8**, then **No, I already have an APK**, and choose the original regional APK, such as `mrp_ru_arm64_108.apk`.
-4. Apply **Remove regional and expiration restrictions**, then install the result. In Expert mode, check the patch selection before pressing **Patch**.
+3. Download the original regional APK from the publisher's [Moon+ Reader download page](https://moondownload.com/). Find the section **For Russian & Belarusian paid users who can't get the app from GooglePlay** and select:
 
-You can also download `moonreader-regional-patches-1.0.0.mpp` from [Releases](https://github.com/salihefee/moonreader-regional-patches/releases/latest), copy it to Downloads, and use **Sources → + → Local** to import it.
+   * **`mrp_ru_arm64.apk`** (shown as 28 MB) for an ARM64 device; this is the variant tested with this patch.
+   * **`mrp_ru_universal.apk`** (shown as 38 MB) if you need the universal variant. This variant has not been tested here.
+
+   Save the APK without installing it. The filenames and sizes above identify the links in that section; the publisher may update the files and sizes later. The page provides this regional download for existing paid Pro users.
+4. Return to Manager and open **Moon+ Reader Pro (regional build)**. Select **10.8**, then **No, I already have an APK**, and choose the APK you just downloaded. Manager's **Help me find an APK** button uses its own download lookup; use the official page above for this regional build.
+5. Apply **Remove regional and expiration restrictions**, then install the result. In Expert mode, check the patch selection before pressing **Patch**.
+
+You can also download `moonreader-regional-patches-1.0.1.mpp` from [Releases](https://github.com/salihefee/moonreader-regional-patches/releases/latest), copy it to Downloads, and use **Sources → + → Local** to import it.
 
 **Back up reader settings and annotations before switching builds.** Manager signs its output with its own key. It usually cannot update an app signed by the developer, another patcher, or the earlier PC-generated APK; uninstalling that copy can erase its app data. Keep Manager's signing key backed up for future updates.
 
@@ -60,7 +66,7 @@ export ANDROID_SDK_ROOT=/path/to/android-sdk
 Output:
 
 ```text
-patches/build/libs/moonreader-regional-patches-1.0.0.mpp
+patches/build/libs/moonreader-regional-patches-1.0.1.mpp
 ```
 
 The build downloads the public Morphe Desktop 2.2.0 release, checks its pinned SHA-256, and uses its bundled Morphe Patcher 2.4.0 API as a compile-only dependency. Only this project's patch classes and their DEX are packaged in the `.mpp`; the Desktop JAR is not included. This standalone build avoids GitHub Packages authentication required by the upstream Gradle plugin. The Gradle wrapper and project scaffolding originated from the [official patches template](https://github.com/MorpheApp/morphe-patches-template); the patch implementation is in [RegionalRestrictionsPatch.kt](patches/src/main/kotlin/local/moonreader/patches/RegionalRestrictionsPatch.kt).
@@ -69,7 +75,7 @@ To patch locally using the downloaded tool:
 
 ```sh
 java -jar tools/morphe-desktop-2.2.0-all.jar patch \
-  --patches patches/build/libs/moonreader-regional-patches-1.0.0.mpp \
+  --patches patches/build/libs/moonreader-regional-patches-1.0.1.mpp \
   --validate \
   --out moonreader-patched.apk \
   /path/to/original-regional.apk

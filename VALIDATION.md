@@ -1,4 +1,4 @@
-# Validation for v1.0.0
+# Validation for v1.0.1
 
 - Five unit tests pass: both checks, shifted instructions/later date, changed date logic, missing warning, and already-patched input.
 - Morphe Desktop 2.2.0 (Patcher 2.4.0) loads the built `.mpp`, discovers exactly one patch, and patches the supplied original regional 10.8 ARM64 APK with fingerprint validation enabled.

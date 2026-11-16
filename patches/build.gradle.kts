@@ -4,7 +4,7 @@ import java.net.URI
 
 plugins { kotlin("jvm") version "2.4.21" }
 group = "local.moonreader"
-version = "1.0.0"
+version = "1.0.1"
 repositories { mavenCentral() }
 
 // Public release contains the exact patcher API and its dependencies, so no GitHub PAT is needed.

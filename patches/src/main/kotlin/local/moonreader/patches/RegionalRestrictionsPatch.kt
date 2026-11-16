@@ -101,16 +101,17 @@ internal object RegionalChecks {
 @Suppress("unused")
 val removeRegionalRestrictionsPatch = patch(
     name = "Remove regional and expiration restrictions",
-    description = "Allow any device locale and remove the fixed expiration cutoff in the regional Moon+ Reader Pro build. Stops if the expected checks are missing or ambiguous.",
+    description = "Allow any device locale and remove the fixed expiration cutoff in the regional Moon+ Reader Pro build. Stops if the expected checks are missing or ambiguous. Download the original regional APK from https://moondownload.com/ (mrp_ru_arm64.apk or mrp_ru_universal.apk), then select I already have an APK in Manager.",
     default = true,
 ) {
     compatibleWith(Compatibility(
         name = "Moon+ Reader Pro (regional build)",
         packageName = "com.flyersoft.moonreaderp",
+        description = "Get the original APK at https://moondownload.com/ under the Russian & Belarusian paid users section: mrp_ru_arm64.apk (tested) or mrp_ru_universal.apk (untested).",
         apkFileType = ApkFileType.APK,
         appIconColor = 0x274B72,
         targets = listOf(
-            AppTarget(version = "10.8"),
+            AppTarget(version = "10.8", description = "Download the regional APK from https://moondownload.com/: mrp_ru_arm64.apk (tested) or mrp_ru_universal.apk (untested)."),
             AppTarget(version = null, isExperimental = true),
         ),
     ))
